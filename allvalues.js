@@ -8,18 +8,24 @@ const EMPTY_SETTINGS = 'assets/empty_settings.yaml';
 
 try {
   if (fs.existsSync(DEFAULT_SETTINGS)) {
-    const SETTINGS = YAML.parse(fs.readFileSync(DEFAULT_SETTINGS, 'utf-8'));
+    const D_SETTINGS = YAML.parse(fs.readFileSync(DEFAULT_SETTINGS, 'utf-8'));
 
-    if (fs.existsSync(LOCAL_SETTINGS)) {
-        console.log('Local configuration found! Overriding default configuration...');
-        const L_SETTINGS = YAML.parse(fs.readFileSync(LOCAL_SETTINGS, 'utf-8'));
+    if (fs.existsSync(EMPTY_SETTINGS)) {
+        const LOCAL_VALUE = YAML.parse(fs.readFileSync(EMPTY_SETTINGS, 'utf-8'));
 
-        console.log(L_SETTINGS.public.app.appName);
-
+        const JSON = LOCAL_VALUE.public.app;
+        for(var key in JSON){
+            //console.log(key+": "+D_SETTINGS.public.app[key]);
+            D_SETTINGS.public.app[key] = LOCAL_VALUE.public.app[key];
+        }
 
     } else {
         console.log('Local Configuration not found! Loading default configuration...');
     }
+
+
+    console.log(D_SETTINGS.public.app);
+
 
 
   } else {
