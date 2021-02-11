@@ -1,14 +1,14 @@
 import fs from 'fs';
 import YAML from 'yaml';
 
-const DEFAULT_SETTINGS_FILE_PATH = 'assets/default-settings.yaml';
-const LOCAL_SETTINGS_FILE_PATH = 'assets/local-settings.yaml';
-const EMPTY_SETTINGS_FILE_PATH = 'assets/empty-settings.yaml';
+const DEFAULT_SETTINGS = 'assets/default_settings.yaml';
+const LOCAL_SETTINGS = 'assets/local_settings.yaml';
+const EMPTY_SETTINGS = 'assets/empty_settings.yaml';
 
 
 try {
-  if (fs.existsSync(DEFAULT_SETTINGS_FILE_PATH)) {
-    const SETTINGS = YAML.parse(fs.readFileSync(DEFAULT_SETTINGS_FILE_PATH, 'utf-8'));
+  if (fs.existsSync(DEFAULT_SETTINGS)) {
+    const SETTINGS = YAML.parse(fs.readFileSync(DEFAULT_SETTINGS, 'utf-8'));
     console.log(SETTINGS);
 
   } else {
