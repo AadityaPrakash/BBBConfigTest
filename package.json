@@ -2,7 +2,7 @@
   "name": "bbbconfigtest",
   "version": "1.0.0",
   "description": "BBB Config Test",
-  "main": "filebased.js",
+  "main": "valuebased.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
